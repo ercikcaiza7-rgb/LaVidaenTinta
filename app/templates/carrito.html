@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#11131b">
+  <title>Tu carrito — La Vida en Tinta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="{{ url_for('index') }}" aria-label="La Vida en Tinta, inicio">
+        <span class="brand-mark" aria-hidden="true">L<span>.</span></span>
+        <span class="brand-name"><span>La Vida</span><small>EN TINTA</small></span>
+      </a>
+      <nav class="header-actions" aria-label="Navegación">
+        {% if usuario %}
+          <span class="user-greeting">Hola, {{ usuario.get('nombre', 'lector') }}</span>
+          <a class="button button-quiet button-small" href="{{ url_for('perfil') }}">Mi perfil</a>
+          <a class="button button-quiet button-small" href="{{ url_for('index') }}">Seguir comprando</a>
+          <a class="button button-quiet button-small" href="{{ url_for('logout') }}">Salir</a>
+        {% else %}
+          <a class="button button-quiet button-small" href="{{ url_for('login') }}">Ingresar</a>
+          <a class="button button-primary button-small" href="{{ url_for('registro') }}">Crear cuenta</a>
+        {% endif %}
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-content shell">
+    <div class="section-heading page-heading">
+      <div>
+        <p class="eyebrow">TU PRÓXIMA LECTURA</p>
+        <h1>Tu carrito de <span>compras.</span></h1>
+      </div>
+      <a class="text-link" href="{{ url_for('index') }}">Seguir explorando <span aria-hidden="true">↗</span></a>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-messages" role="status" aria-live="polite">
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    {% if carrito and carrito.get('items') %}
+      {% set total = namespace(value=0) %}
+      {% for item in carrito.get('items', []) %}
+        {% set total.value = total.value + (item.get('cantidad', 0) * item.get('precio_unitario', 0)) %}
+      {% endfor %}
+
+      <div class="cart-layout">
+        <div class="cart-items-list">
+          {% for item in carrito.get('items', []) %}
+            <article class="cart-item-card">
+              <div class="cart-item-info">
+                <p class="eyebrow">LECTURA SELECCIONADA</p>
+                <h2>{{ item.get('titulo', 'Libro') }}</h2>
+                <p>Precio unitario: &#36;{{ "%.2f"|format(item.get('precio_unitario', 0)) }}</p>
+                <div class="cart-item-controls">
+                  <form action="{{ url_for('actualizar_carrito', libro_titulo=item.get('titulo', '')) }}" method="post" class="update-form">
+                    <label for="cantidad-{{ loop.index }}">Cantidad</label>
+                    <input type="number" id="cantidad-{{ loop.index }}" name="cantidad" value="{{ item.get('cantidad', 1) }}" min="0" inputmode="numeric">
+                    <button type="submit" class="button button-quiet button-small">Actualizar</button>
+                  </form>
+                  <a class="button button-danger button-small" href="{{ url_for('eliminar_carrito', libro_titulo=item.get('titulo', '')) }}">Quitar del carrito</a>
+                </div>
+              </div>
+              <div class="cart-item-subtotal">
+                <span class="cart-subtotal-label">Subtotal</span>
+                <strong class="price">&#36;{{ "%.2f"|format(item.get('cantidad', 0) * item.get('precio_unitario', 0)) }}</strong>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+
+        <aside class="cart-summary">
+          <p class="eyebrow">RESUMEN</p>
+          <h2>Tu pedido</h2>
+          <div class="summary-total">
+            <span>Total a pagar</span>
+            <strong class="price">&#36;{{ "%.2f"|format(total.value) }}</strong>
+          </div>
+          <p class="summary-note">El stock se valida de nuevo antes de completar la compra.</p>
+          <a href="{{ url_for('procesar_pago') }}" class="button button-primary button-wide">Proceder al pago <span aria-hidden="true">→</span></a>
+        </aside>
+      </div>
+    {% else %}
+      <section class="cart-empty">
+        <div class="empty-mark" aria-hidden="true">L.</div>
+        <p class="eyebrow">TODAVÍA HAY MUCHAS HISTORIAS</p>
+        <h2>Tu carrito está vacío.</h2>
+        <p>Explora el catálogo y agrega el libro que quieras llevar contigo.</p>
+        <a href="{{ url_for('index') }}" class="button button-primary">Ver catálogo</a>
+      </section>
+    {% endif %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main shell">
+      <div class="footer-brand">
+        <a class="brand" href="{{ url_for('index') }}"><span class="brand-mark" aria-hidden="true">L<span>.</span></span><span class="brand-name"><span>La Vida</span><small>EN TINTA</small></span></a>
+        <p>Un lugar para encontrar la historia que estabas buscando.</p>
+      </div>
+      <div class="footer-column"><h2>Explorar</h2><a href="{{ url_for('index') }}">Catálogo</a><a href="{{ url_for('carrito') }}">Carrito</a></div>
+      <div class="footer-column"><h2>Tu cuenta</h2><a href="{{ url_for('login') }}">Ingresar</a><a href="{{ url_for('perfil') }}">Mi perfil</a></div>
+      <div class="footer-column"><h2>La librería</h2><p class="social-caption">Hecho con cariño para lectores.</p></div>
+    </div>
+    <div class="footer-bottom shell"><span>© 2026 La Vida en Tinta</span><span>Una historia a la vez <span class="footer-heart" aria-hidden="true">♥</span></span></div>
+  </footer>
+</body>
+</html>

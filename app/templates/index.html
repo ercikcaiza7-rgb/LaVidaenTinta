@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#11131b">
+  <meta name="description" content="Encuentra tu próxima historia en La Vida en Tinta.">
+  <title>La Vida en Tinta — Encuentra tu próxima historia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <script src="{{ url_for('static', filename='catalog.js') }}" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="{{ url_for('index') }}" aria-label="La Vida en Tinta, inicio">
+        <span class="brand-mark" aria-hidden="true">L<span>.</span></span>
+        <span class="brand-name"><span>La Vida</span><small>EN TINTA</small></span>
+      </a>
+      <nav class="header-actions" aria-label="Navegación principal">
+        {% if usuario %}
+          <span class="user-greeting">Hola, {{ usuario.get('nombre', 'lector') }}</span>
+          <a class="button button-quiet button-small" href="{{ url_for('perfil') }}">Mi perfil</a>
+          <a class="button button-primary button-small cart-link" href="{{ url_for('carrito') }}">Carrito</a>
+          <a class="button button-quiet button-small" href="{{ url_for('logout') }}">Salir</a>
+          <a class="button button-primary button-small" href="{{ url_for('contacto') }}">Contacto</a>
+        {% else %}
+          <a class="button button-quiet button-small" href="{{ url_for('login') }}">Ingresar</a>
+          <a class="button button-primary button-small" href="{{ url_for('registro') }}">Crear cuenta</a>
+          <a class="button button-primary button-small" href="{{ url_for('contacto') }}">Contacto</a>
+        {% endif %}
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero shell" id="inicio">
+      <p class="eyebrow"><span class="eyebrow-line"></span> LIBROS PARA SENTIR, PENSAR Y SOÑAR</p>
+      <h1>Tu próxima historia<br><span>empieza aquí.</span></h1>
+      <p class="hero-copy">Explora el catálogo, encuentra tu próxima lectura y descubre una recomendación de la librería.</p>
+
+      <form class="search-form search-filter-form" action="{{ url_for('index') }}" method="get" role="search">
+        <label class="sr-only" for="book-search">Buscar libros por título</label>
+        <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 4.5 4.5"></path></svg>
+        <input id="book-search" type="search" name="q" value="{{ busqueda_actual }}" placeholder="Busca un título…">
+        <label class="sr-only" for="category-filter">Filtrar por categoría</label>
+        <select id="category-filter" name="categoria">
+          <option value="">Todas las categorías</option>
+          {% for categoria in categorias %}
+            <option value="{{ categoria }}" {% if categoria_actual == categoria %}selected{% endif %}>{{ categoria }}</option>
+          {% endfor %}
+        </select>
+        <button class="button button-primary" type="submit">Buscar <span aria-hidden="true">↗</span></button>
+      </form>
+
+      <nav class="category-list" aria-label="Filtrar libros por categoría">
+        <a class="category-chip {% if not categoria_actual %}is-active{% endif %}" href="{{ url_for('index', q=busqueda_actual or None) }}" {% if not categoria_actual %}aria-current="page"{% endif %}>Todos</a>
+        {% for categoria in categorias %}
+          <a class="category-chip {% if categoria_actual == categoria %}is-active{% endif %}" href="{{ url_for('index', q=busqueda_actual or None, categoria=categoria) }}" {% if categoria_actual == categoria %}aria-current="page"{% endif %}>{{ categoria }}</a>
+        {% endfor %}
+      </nav>
+    </section>
+
+    {% if libros %}
+      <div class="featured-carousel shell" data-featured-carousel aria-label="Recomendaciones de la librería" aria-roledescription="carrusel">
+        {% for destacado in libros[:5] %}
+          {% set slide_index = loop.index0 %}
+          {% set slide_number = loop.index %}
+          <article class="featured featured-slide {% if loop.first %}is-active{% endif %}" data-featured-slide aria-hidden="{{ 'false' if loop.first else 'true' }}" aria-roledescription="diapositiva">
+            <div class="featured-art">
+              <span class="featured-glow" aria-hidden="true"></span>
+              {% if destacado.get('imagen_url') %}
+                <img src="{{ destacado.get('imagen_url') }}" alt="Portada de {{ destacado.get('titulo', 'libro recomendado') }}" loading="lazy" data-cover-image>
+              {% endif %}
+              <span class="featured-sticker">RECOMENDACIÓN<br>DE LA LIBRERÍA</span>
+            </div>
+            <div class="featured-content">
+              <p class="eyebrow"><span class="status-dot"></span> NUESTRA RECOMENDACIÓN</p>
+              <h2>{{ destacado.get('titulo', 'Libro recomendado') }}</h2>
+              <p class="featured-author">{{ destacado.get('autor', 'Autor no disponible') }} · {{ destacado.get('categoria', 'Lectura') }}</p>
+              <p class="featured-description">{{ destacado.get('descripcion') or 'Una historia que puede convertirse en tu próxima lectura.' }}</p>
+              <div class="featured-bottom">
+                <span class="price featured-price">&#36;{{ "%.2f"|format(destacado.get('precio', 0)) }}</span>
+                <a class="button button-light" href="#detalle-{{ destacado.get('_id') }}">Descubrir el libro <span aria-hidden="true">→</span></a>
+              </div>
+              <div class="carousel-note" aria-label="Controles del carrusel">
+                <button class="carousel-arrow" type="button" data-carousel-prev aria-label="Recomendación anterior">‹</button>
+                <div class="carousel-dots" role="group" aria-label="Elegir recomendación">
+                  {% for item in libros[:5] %}
+                    {% set dot_index = loop.index0 %}
+                    <button class="carousel-dot {% if dot_index == slide_index %}active{% endif %}" type="button" data-carousel-slide="{{ dot_index }}" aria-label="Mostrar recomendación {{ loop.index }}" aria-pressed="{{ 'true' if dot_index == slide_index else 'false' }}"></button>
+                  {% endfor %}
+                </div>
+                <button class="carousel-arrow" type="button" data-carousel-next aria-label="Siguiente recomendación">›</button>
+                <span class="carousel-label">{{ "%02d"|format(slide_number) }} / {{ "%02d"|format(libros[:5]|length) }} · SELECCIÓN DE LA LIBRERÍA</span>
+              </div>
+            </div>
+            <span class="featured-number" aria-hidden="true">{{ "%02d"|format(slide_number) }}</span>
+          </article>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <section class="catalog shell" id="catalogo" aria-labelledby="catalog-heading">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">PARA CADA ESTADO DE ÁNIMO</p>
+          <h2 id="catalog-heading">Historias que <span>te encuentran.</span></h2>
+        </div>
+        {% if busqueda_actual or categoria_actual %}
+          <a class="text-link" href="{{ url_for('index') }}">Ver todo el catálogo <span aria-hidden="true">↗</span></a>
+        {% endif %}
+      </div>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <div class="flash-messages" role="status" aria-live="polite">
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      <div class="catalog-toolbar">
+        <p>
+          {% if busqueda_actual or categoria_actual %}
+            Resultados del catálogo <span>·</span> {{ libros|length }} libro(s)
+          {% else %}
+            Explora el catálogo y encuentra tu próxima gran aventura <span>·</span> {{ libros|length }} libro(s)
+          {% endif %}
+        </p>
+      </div>
+
+      <div class="book-grid">
+        {% for libro in libros %}
+          {% set stock = libro.get('stock', 0)|int %}
+          <article class="book-card" data-category="{{ libro.get('categoria', '')|lower }}">
+            <a class="book-cover" href="#detalle-{{ libro.get('_id') }}" aria-label="Ver detalles de {{ libro.get('titulo', 'este libro') }}">
+              {% if libro.get('imagen_url') %}
+                <img src="{{ libro.get('imagen_url') }}" alt="Portada de {{ libro.get('titulo', 'libro') }}" loading="lazy" data-cover-image>
+              {% endif %}
+            </a>
+            <div class="book-info">
+              <p class="book-category">{{ libro.get('categoria', 'Sin categoría') }}</p>
+              <h3>{{ libro.get('titulo', 'Libro sin título') }}</h3>
+              <p class="book-author">{{ libro.get('autor', 'Autor no disponible') }}</p>
+              <div class="book-purchase">
+                <span class="price">&#36;{{ "%.2f"|format(libro.get('precio', 0)) }}</span>
+                {% if stock > 0 %}
+                  <span class="availability"><i aria-hidden="true"></i>Disponible</span>
+                {% else %}
+                  <span class="availability unavailable"><i aria-hidden="true"></i>Agotado</span>
+                {% endif %}
+              </div>
+              <div class="book-actions">
+                <a class="button button-quiet" href="#detalle-{{ libro.get('_id') }}">Ver más</a>
+                {% if stock > 0 %}
+                  <a class="button button-primary" href="{{ url_for('agregar_carrito', libro_id=libro.get('_id')) }}">Agregar</a>
+                {% else %}
+                  <button class="button button-disabled" type="button" disabled>Agotado</button>
+                {% endif %}
+              </div>
+            </div>
+          </article>
+        {% else %}
+          <div class="empty-catalog">
+            <p class="eyebrow">AÚN NO HAY RESULTADOS</p>
+            <h3>No encontramos libros con esos filtros.</h3>
+            <p>Prueba con otro título o vuelve a ver todo el catálogo.</p>
+            <a class="button button-primary" href="{{ url_for('index') }}">Ver todos los libros</a>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    {% if libros %}
+      <div class="book-modal-list">
+        {% for libro in libros %}
+          {% set stock = libro.get('stock', 0)|int %}
+          <div class="book-modal" id="detalle-{{ libro.get('_id') }}">
+            <a class="modal-backdrop" href="#catalogo" aria-label="Cerrar ficha"></a>
+            <section class="book-modal-card" role="dialog" aria-modal="true" aria-labelledby="titulo-{{ libro.get('_id') }}">
+              <a class="modal-close" href="#catalogo" aria-label="Cerrar">×</a>
+              <p class="eyebrow">{{ libro.get('categoria', 'CATÁLOGO') }}</p>
+              <h2 id="titulo-{{ libro.get('_id') }}">{{ libro.get('titulo', 'Libro sin título') }}</h2>
+              <p class="modal-author">{{ libro.get('autor', 'Autor no disponible') }}</p>
+              <p>{{ libro.get('descripcion') or 'Consulta aquí los datos principales de esta edición.' }}</p>
+              <p class="modal-meta">{% if stock > 0 %}{{ stock }} unidad(es) disponibles{% else %}Agotado por ahora{% endif %}</p>
+              <strong class="price">&#36;{{ "%.2f"|format(libro.get('precio', 0)) }}</strong>
+              {% if stock > 0 %}
+                <a class="button button-primary modal-add" href="{{ url_for('agregar_carrito', libro_id=libro.get('_id')) }}">Agregar al carrito</a>
+              {% else %}
+                <button class="button button-disabled modal-add" type="button" disabled>Agotado por ahora</button>
+              {% endif %}
+            </section>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <section class="newsletter shell" aria-labelledby="newsletter-heading">
+      <div>
+        <p class="eyebrow">UNA LIBRERÍA PARA QUIENES LEEN</p>
+        <h2 id="newsletter-heading">Historias nuevas.<br><span>Más razones para leer.</span></h2>
+      </div>
+      <div class="newsletter-cta">
+        <p>Crea tu cuenta para guardar tu carrito y consultar tus pedidos desde tu perfil.</p>
+        <a class="button button-primary" href="{{ url_for('registro') }}">Crear mi cuenta <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main shell">
+      <div class="footer-brand">
+        <a class="brand" href="{{ url_for('index') }}" aria-label="La Vida en Tinta, inicio">
+          <span class="brand-mark" aria-hidden="true">L<span>.</span></span>
+          <span class="brand-name"><span>La Vida</span><small>EN TINTA</small></span>
+        </a>
+        <p>Un lugar para encontrar la historia que estabas buscando.</p>
+      </div>
+      <div class="footer-column">
+        <h2>Explorar</h2>
+        <a href="{{ url_for('index') }}">Catálogo</a>
+        <a href="{{ url_for('carrito') }}">Carrito</a>
+      </div>
+      <div class="footer-column">
+        <h2>Tu cuenta</h2>
+        <a href="{{ url_for('login') }}">Ingresar</a>
+        <a href="{{ url_for('registro') }}">Crear cuenta</a>
+        <a href="{{ url_for('perfil') }}">Mi perfil</a>
+      </div>
+      <div class="footer-column">
+        <h2>La librería</h2>
+        <p class="social-caption">Hecho con cariño para lectores.</p><a href="{{ url_for('contacto') }}">Contacto</a>
+        <h2>Sigue la historia</h2><div class="social-links"><a href="https://instagram.com" aria-label="Instagram">ig</a><a href="https://facebook.com" aria-label="Facebook">f</a><a href="https://x.com" aria-label="X, antes Twitter">𝕏</a></div><p class="social-caption">@lavidaentinta</p></div>
+      </div>
+    </div>
+    <div class="footer-bottom shell">
+      <span>© 2026 La Vida en Tinta</span>
+      <span>Una historia a la vez <span class="footer-heart" aria-hidden="true">♥</span></span>
+    </div>
+  </footer>
+</body>
+</html>

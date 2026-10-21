@@ -1,0 +1,236 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#11131b">
+  <meta name="description" content="Contacta con La Vida en Tinta y envíanos tus consultas.">
+
+  <title>Contacto — La Vida en Tinta</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+
+      <a class="brand" href="{{ url_for('index') }}" aria-label="La Vida en Tinta, inicio">
+        <span class="brand-mark" aria-hidden="true">L<span>.</span></span>
+        <span class="brand-name">
+          <span>La Vida</span>
+          <small>EN TINTA</small>
+        </span>
+      </a>
+
+      <nav class="header-actions" aria-label="Navegación principal">
+        <a class="button button-quiet button-small"
+           href="{{ url_for('index') }}">
+          Inicio
+        </a>
+
+        <a class="button button-primary button-small"
+           href="{{ url_for('contacto') }}"
+           aria-current="page">
+          Contacto
+        </a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="page-content">
+    <section class="shell">
+
+      <div class="page-heading">
+        <p class="eyebrow">
+          <span class="eyebrow-line"></span>
+          ESTAMOS PARA AYUDARTE
+        </p>
+
+        <h1>Hablemos de <span>lecturas.</span></h1>
+
+        <p class="contact-form-intro">
+          ¿Tienes alguna pregunta sobre nuestros libros, pedidos o servicios?
+          Escríbenos y cuéntanos cómo podemos ayudarte.
+        </p>
+      </div>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <div class="flash-messages" role="status" aria-live="polite">
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      <div class="contact-layout">
+
+        <aside class="contact-info">
+          <p class="eyebrow">LA VIDA EN TINTA</p>
+
+          <h2>Tu próxima historia empieza aquí.</h2>
+
+          <p>
+            Queremos que disfrutes de la experiencia de encontrar
+            tu próxima lectura. Envíanos tus dudas o sugerencias.
+          </p>
+
+          <div class="contact-details">
+
+            <div class="contact-detail">
+              <strong>Consultas sobre libros</strong>
+              <p>Preguntas sobre títulos, autores y disponibilidad.</p>
+            </div>
+
+            <div class="contact-detail">
+              <strong>Pedidos y compras</strong>
+              <p>Consultas relacionadas con tus compras en la librería.</p>
+            </div>
+
+            <div class="contact-detail">
+              <strong>Sugerencias</strong>
+              <p>Comparte tus ideas para ayudarnos a mejorar.</p>
+            </div>
+
+            
+    
+            
+<div class="contact-card">
+  <h2>También puedes contactarnos</h2>
+  <p class="contact-card-intro">
+    Estamos aquí para ayudarte. Escríbenos por cualquiera de nuestros medios.
+  </p>
+
+  <a class="contact-card-item whatsapp-item"
+     href="https://wa.me/593991234567"
+     target="_blank"
+     rel="noopener noreferrer">
+    <span class="contact-icon whatsapp-icon" aria-hidden="true">◉</span>
+    <span>
+      <strong>WhatsApp</strong>
+      <small>+593 99 123 4567</small>
+    </span>
+  </a>
+
+  <a class="contact-card-item"
+     href="mailto:contacto@lavidaentinta.example">
+    <span class="contact-icon" aria-hidden="true">✉</span>
+    <span>
+      <strong>Correo electrónico</strong>
+      <small>contacto@lavidaentinta.example</small>
+    </span>
+  </a>
+
+  <div class="contact-socials">
+    <p><strong>Instagram:</strong> @lavidaentinta.ec</p>
+    <p><strong>Facebook:</strong> La Vida en Tinta</p>
+    <p><strong>X:</strong> @VidaEnTinta</p>
+  </div>
+  
+</div>
+
+          </div>
+        </aside>
+
+        <section class="contact-form-card">
+          <p class="eyebrow">ESCRÍBENOS</p>
+
+          <h2>Envíanos tu consulta</h2>
+
+          <p class="contact-form-intro">
+            Completa los siguientes campos. No necesitas tener una cuenta
+            ni iniciar sesión para contactarnos.
+          </p>
+
+          <form
+            action="{{ url_for('contacto') }}"
+            method="post"
+            class="contact-form"
+          >
+
+            <label for="nombre">Nombre completo</label>
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              minlength="2"
+              maxlength="100"
+              autocomplete="name"
+              required
+              placeholder="Escribe tu nombre"
+            >
+
+            <label for="correo">Correo electrónico</label>
+            <input
+              type="email"
+              id="correo"
+              name="correo"
+              maxlength="254"
+              autocomplete="email"
+              required
+              placeholder="tu@correo.com"
+            >
+
+            <label for="asunto">Asunto</label>
+            <input
+              type="text"
+              id="asunto"
+              name="asunto"
+              minlength="3"
+              maxlength="120"
+              required
+              placeholder="¿Sobre qué deseas consultar?"
+            >
+
+            <label for="mensaje">Tu mensaje</label>
+            <textarea
+              id="mensaje"
+              name="mensaje"
+              minlength="10"
+              maxlength="3000"
+              required
+              placeholder="Escribe aquí tu pregunta o sugerencia..."
+            ></textarea>
+
+            <button
+              type="submit"
+              class="button button-primary button-wide"
+            >
+              Enviar consulta
+              <span aria-hidden="true">↗</span>
+            </button>
+
+          </form>
+
+          <p class="contact-note">
+            Tus datos se utilizarán para gestionar y responder tu consulta.
+            No compartas contraseñas ni información bancaria en este formulario.
+          </p>
+        </section>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-bottom">
+      <span>© 2026 La Vida en Tinta</span>
+      <a href="{{ url_for('index') }}">← Volver al catálogo</a>
+    </div>
+  </footer>
+</body>
+</html>

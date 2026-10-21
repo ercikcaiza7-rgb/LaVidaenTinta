@@ -1,0 +1,420 @@
+[{
+  "_id": {
+    "$oid": "6acb18319e27cd2867eab330"
+  },
+  "titulo": "El principito",
+  "autor": "Antoine de Saint-Exupéry",
+  "categoria": "Infantiles",
+  "precio": 12.5,
+  "stock": 10,
+  "descripcion": "Un piloto conoce a un pequeño príncipe que viaja entre planetas y aprende sobre la amistad y lo esencial.",
+  "imagen_url": "https://www.edicontinente.com.ar/image/titulos/9788419087492.jpg"
+},
+{
+  "_id": {
+    "$oid": "6acb18319e27cd2867eab331"
+  },
+  "titulo": "Donde viven los monstruos",
+  "autor": "Maurice Sendak",
+  "categoria": "Infantiles",
+  "precio": 14.9,
+  "stock": 8,
+  "descripcion": "Max viaja a una isla fantástica habitada por criaturas salvajes y descubre el valor de volver a casa.",
+  "imagen_url": "https://images.cdn1.buscalibre.com/fit-in/360x360/1e/99/1e99d0968f1e6236867f2bbfbf1544d0.jpg\n"
+},
+{
+  "_id": {
+    "$oid": "6acb18319e27cd2867eab332"
+  },
+  "titulo": "Matilda",
+  "autor": "Roald Dahl",
+  "categoria": "Infantiles",
+  "precio": 13.75,
+  "stock": 7,
+  "descripcion": "Una niña extraordinariamente inteligente descubre sus talentos y encuentra personas que la comprenden.",
+  "imagen_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQy3UNlWgrboHFMxFHEVMA6hWf7UYhUCRGvh6RxtbMBQ&s=10\n"
+},
+{
+  "_id": {
+    "$oid": "6acb18319e27cd2867eab333"
+  },
+  "titulo": "Drácula",
+  "autor": "Bram Stoker",
+  "categoria": "Terror",
+  "precio": 15.9,
+  "stock": 6,
+  "descripcion": "Un joven abogado llega a Transilvania y descubre el oscuro secreto del conde Drácula.",
+  "imagen_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRdxQdqFaC2V2X8iriH2C0FWjurEIDzNog5CXtTGsUvO2mNvdLOiefqiyy&s=10"
+},
+{
+  "_id": {
+    "$oid": "6acb18319e27cd2867eab334"
+  },
+  "titulo": "Frankenstein",
+  "autor": "Mary Shelley",
+  "categoria": "Terror",
+  "precio": 14.5,
+  "stock": 7,
+  "descripcion": "Un científico crea vida y debe afrontar las consecuencias de abandonar a su criatura.",
+  "imagen_url": "https://images.cdn2.buscalibre.com/fit-in/660x660/0b/34/0b34f7c5e7987f434818bd8a5de54084.jpg\n"
+},
+{
+  "_id": {
+    "$oid": "6acb18319e27cd2867eab335"
+  },
+  "titulo": "El extraño caso del Dr. Jekyll y Mr. Hyde",
+  "autor": "Robert Louis Stevenson",
+  "categoria": "Terror",
+  "precio": 12.9,
+  "stock": 5,
+  "descripcion": "Una investigación revela el inquietante vínculo entre un respetado médico y un misterioso personaje.",
+  "imagen_url": "https://m.media-amazon.com/images/I/51ZMf0mLtnL._UF1000,1000_QL80_.jpg"
+},
+{
+  "_id": {
+    "$oid": "6acb18319e27cd2867eab336"
+  },
+  "titulo": "1984",
+  "autor": "George Orwell",
+  "categoria": "Ficción",
+  "precio": 15.5,
+  "stock": 8,
+  "descripcion": "En una sociedad vigilada, Winston Smith intenta conservar su libertad y su propia verdad.",
+  "imagen_url": "https://images.cdn1.buscalibre.com/fit-in/360x360/b0/39/b039af065268818b7bd3b0e016f8db65.jpg"
+},
+{
+  "_id": {
+    "$oid": "6acb18319e27cd2867eab337"
+  },
+  "titulo": "Cien años de soledad",
+  "autor": "Gabriel García Márquez",
+  "categoria": "Ficción",
+  "precio": 17,
+  "stock": 6,
+  "descripcion": "La familia Buendía atraviesa generaciones de historias extraordinarias en el pueblo de Macondo.",
+  "imagen_url": "https://yage.agency/2024/08/9786287641587-1-2.png\n"
+},
+{
+  "_id": {
+    "$oid": "6acb18319e27cd2867eab338"
+  },
+  "titulo": "El alquimista",
+  "autor": "Paulo Coelho",
+  "categoria": "Ficción",
+  "precio": 14,
+  "stock": 8,
+  "descripcion": "Un joven pastor emprende un viaje para encontrar un tesoro y aprender a escuchar sus sueños.",
+  "imagen_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmRQcptt8BgpVkwr0ljo-j7NOaF9VIGxc0isAj8-WzM-w301DE_ZGUZDA&s=10\n"
+},
+{
+  "_id": {
+    "$oid": "6acb18319e27cd2867eab339"
+  },
+  "titulo": "Bajo la misma estrella",
+  "autor": "John Green",
+  "categoria": "Romance",
+  "precio": 13.5,
+  "stock": 7,
+  "descripcion": "Hazel y Gus se conocen en un grupo de apoyo y comparten una historia de amor, humor y valentía.",
+  "imagen_url": "https://www.librostogo.com/wp-content/uploads/2026/06/9788466335362.jpg\n"
+},
+{
+  "_id": {
+    "$oid": "6acb18319e27cd2867eab33a"
+  },
+  "titulo": "Orgullo y prejuicio",
+  "autor": "Jane Austen",
+  "categoria": "Romance",
+  "precio": 12.5,
+  "stock": 9,
+  "descripcion": "Elizabeth Bennet y Fitzwilliam Darcy se enfrentan a sus prejuicios mientras descubren sus sentimientos.",
+  "imagen_url": "https://m.media-amazon.com/images/I/71wnBzT9WqL._AC_UF1000,1000_QL80_.jpg\n"
+},
+{
+  "_id": {
+    "$oid": "6acb18319e27cd2867eab33b"
+  },
+  "titulo": "Como agua para chocolate",
+  "autor": "Laura Esquivel",
+  "categoria": "Romance",
+  "precio": 14.25,
+  "stock": 5,
+  "descripcion": "Una historia familiar donde el amor, la cocina y las tradiciones se mezclan en cada receta.",
+  "imagen_url": "https://images.cdn2.buscalibre.com/fit-in/360x360/fa/40/fa4017d69fa08b42020d2163230b052d.jpg\n"
+},
+{
+  "_id": {
+    "$oid": "6acb18319e27cd2867eab33c"
+  },
+  "titulo": "El monje que vendió su Ferrari",
+  "autor": "Robin Sharma",
+  "categoria": "Autoayuda",
+  "precio": 15,
+  "stock": 8,
+  "descripcion": "Una fábula sobre bienestar, propósito y hábitos para vivir con mayor equilibrio.",
+  "imagen_url": "https://images.cdn2.buscalibre.com/fit-in/360x360/e7/a8/e7a8e6255da816284596d921feee302a.jpg\n"
+},
+{
+  "_id": {
+    "$oid": "6acb18319e27cd2867eab33d"
+  },
+  "titulo": "Mindset: La actitud del éxito",
+  "autor": "Carol S. Dweck",
+  "categoria": "Autoayuda",
+  "precio": 18.25,
+  "stock": 6,
+  "descripcion": "Una introducción a cómo la mentalidad influye en el aprendizaje, los desafíos y el crecimiento personal.",
+  "imagen_url": "https://cdn.shopify.com/s/files/1/0890/7082/9752/files/9788416579167.jpg?v=1755289310\n"
+},
+{
+  "_id": {
+    "$oid": "6acb18319e27cd2867eab33e"
+  },
+  "titulo": "Los 7 hábitos de la gente altamente efectiva",
+  "autor": "Stephen R. Covey",
+  "categoria": "Autoayuda",
+  "precio": 17,
+  "stock": 7,
+  "descripcion": "Principios prácticos para organizar prioridades, mejorar relaciones y avanzar hacia objetivos personales.",
+  "imagen_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuiJ2diJl_xFIyFyqaRr1XekyKYQftUkoWc3W1qpcRzSywg_oo447wNSk&s=10"
+},
+{
+  "_id": {
+    "$oid": "6acb1f349e27cd2867eab33f"
+  },
+  "titulo": "Pinocho",
+  "autor": "Carlo Collodi",
+  "categoria": "Infantiles",
+  "precio": 10.5,
+  "stock": 8,
+  "descripcion": "Las aventuras de una marioneta de madera que desea convertirse en un niño de verdad.",
+  "imagen_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeOyhUgF7SHHJD4Z2blCWYftgdUfWx2CCxBFxmShB-3aNSV_5nv31dt4jc&s=10\n"
+},
+{
+  "_id": {
+    "$oid": "6acb1f349e27cd2867eab340"
+  },
+  "titulo": "Charlie y la fábrica de chocolate",
+  "autor": "Roald Dahl",
+  "categoria": "Infantiles",
+  "precio": 13.5,
+  "stock": 7,
+  "descripcion": "Charlie obtiene una oportunidad para recorrer la extraordinaria fábrica de Willy Wonka.",
+  "imagen_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0r1iy3nVu-NwcyqOazJ3mowmIdNn6CUf450H5z5zww23BWs7DgbZJ5yzW&s=10\n"
+},
+{
+  "_id": {
+    "$oid": "6acb1f349e27cd2867eab341"
+  },
+  "titulo": "Alicia en el país de las maravillas",
+  "autor": "Lewis Carroll",
+  "categoria": "Infantiles",
+  "precio": 12.9,
+  "stock": 6,
+  "descripcion": "Alicia cae por una madriguera y llega a un mundo lleno de personajes y situaciones sorprendentes.",
+  "imagen_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsWff3HWgO-ykicmS_Gf-LRnYxihyX3jK2bZQwL2V_s5EJOyY6R3Qjk-A&s=10\n"
+},
+{
+  "_id": {
+    "$oid": "6acb1f349e27cd2867eab342"
+  },
+  "titulo": "El Grúfalo",
+  "autor": "Julia Donaldson",
+  "categoria": "Infantiles",
+  "precio": 12,
+  "stock": 9,
+  "descripcion": "Un pequeño ratón se abre camino por el bosque usando su ingenio para enfrentarse a quienes quieren atraparlo.",
+  "imagen_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbidgMIAVFQ6v2Ftbi3uRXjAQ1rqwyXGFkjp9IyrM132TIH7AXI4w07ocA&s=10\n"
+},
+{
+  "_id": {
+    "$oid": "6acb1f349e27cd2867eab343"
+  },
+  "titulo": "El resplandor",
+  "autor": "Stephen King",
+  "categoria": "Terror",
+  "precio": 17.5,
+  "stock": 5,
+  "descripcion": "Una familia pasa el invierno en un hotel aislado donde comienzan a ocurrir sucesos aterradores.",
+  "imagen_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpLRpy0Nni1yhDgfEJ73b5s0NZSefMCSzoTc1ZhKpLpZMC3GWiYOAG1-_e&s=10\n"
+},
+{
+  "_id": {
+    "$oid": "6acb1f349e27cd2867eab344"
+  },
+  "titulo": "Cementerio de animales",
+  "autor": "Stephen King",
+  "categoria": "Terror",
+  "precio": 18,
+  "stock": 4,
+  "descripcion": "Una familia descubre un lugar donde la muerte parece no ser el final, pero regresar tiene un precio.",
+  "imagen_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn1w1BgEn34Q5UqcyBf0CyDB8-_mFvbFfWXoRKjN7NuQ&s=10\n"
+},
+{
+  "_id": {
+    "$oid": "6acb1f349e27cd2867eab345"
+  },
+  "titulo": "La llamada de Cthulhu",
+  "autor": "H. P. Lovecraft",
+  "categoria": "Terror",
+  "precio": 13.25,
+  "stock": 7,
+  "descripcion": "Un investigador reúne testimonios que revelan la existencia de un antiguo y perturbador culto.",
+  "imagen_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjrqQIYpAsIh23eo9cQRS85YAiH7bzIGxJ1OuJjWsyyBRVRCcsIHDBrce0&s=10\n"
+},
+{
+  "_id": {
+    "$oid": "6acb1f349e27cd2867eab346"
+  },
+  "titulo": "Otra vuelta de tuerca",
+  "autor": "Henry James",
+  "categoria": "Terror",
+  "precio": 12.75,
+  "stock": 6,
+  "descripcion": "Una institutriz llega a una vieja mansión y empieza a sospechar que sus niños están rodeados por presencias extrañas.",
+  "imagen_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfMVb86zWZIZ5C9qNM4Q96WnkWav5KA8_hkIJ4od_LGpiaHgRSwY1c9xU&s=10\n"
+},
+{
+  "_id": {
+    "$oid": "6acb1f349e27cd2867eab347"
+  },
+  "titulo": "El hobbit",
+  "autor": "J. R. R. Tolkien",
+  "categoria": "Ficción",
+  "precio": 16.5,
+  "stock": 8,
+  "descripcion": "Bilbo Bolsón deja su hogar para acompañar a un grupo de enanos en una aventura hacia la Montaña Solitaria.",
+  "imagen_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf3aCgCk-tgnDETeE-hn-BDqgDxwj7wEpqN9dqTSNh0AdKDBXpN9BH0DP5&s=10\n"
+},
+{
+  "_id": {
+    "$oid": "6acb1f349e27cd2867eab348"
+  },
+  "titulo": "Fahrenheit 451",
+  "autor": "Ray Bradbury",
+  "categoria": "Ficción",
+  "precio": 14.75,
+  "stock": 6,
+  "descripcion": "En una sociedad que prohíbe los libros, un bombero comienza a cuestionar el mundo que ayuda a mantener.",
+  "imagen_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8s1ZcLQXCs36M2esewf3mrNxXJxC0eNRVYwJ1C5bhBQ&s\n"
+},
+{
+  "_id": {
+    "$oid": "6acb1f349e27cd2867eab349"
+  },
+  "titulo": "La sombra del viento",
+  "autor": "Carlos Ruiz Zafón",
+  "categoria": "Ficción",
+  "precio": 17.25,
+  "stock": 5,
+  "descripcion": "En la Barcelona de posguerra, un joven descubre un libro que lo conduce a un misterio literario.",
+  "imagen_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNtdF5WBHnmCUh6B_TWkZkvQgTjCYEd0SCupxXRO-9B9ONJdSoC4V9HxE&s=10\n"
+},
+{
+  "_id": {
+    "$oid": "6acb1f349e27cd2867eab34a"
+  },
+  "titulo": "El nombre del viento",
+  "autor": "Patrick Rothfuss",
+  "categoria": "Ficción",
+  "precio": 18.5,
+  "stock": 4,
+  "descripcion": "Kvothe relata su vida, desde una infancia marcada por la música hasta sus primeros años de aprendizaje.",
+  "imagen_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCkvG6PsYM4mZMjc1Nrm341pTR3R1h5D71-5t2yqiYHgh9GPBZ2WghEWs&s=10\n"
+},
+{
+  "_id": {
+    "$oid": "6acb1f349e27cd2867eab34b"
+  },
+  "titulo": "Persuasión",
+  "autor": "Jane Austen",
+  "categoria": "Romance",
+  "precio": 12.75,
+  "stock": 7,
+  "descripcion": "Anne Elliot vuelve a encontrarse con el hombre al que amó años atrás y debe decidir si aún hay una oportunidad.",
+  "imagen_url": "https://images.cdn2.buscalibre.com/fit-in/360x360/dc/70/dc7067824817c3e924028adc5c8bb786.jpg\n"
+},
+{
+  "_id": {
+    "$oid": "6acb1f349e27cd2867eab34c"
+  },
+  "titulo": "Yo antes de ti",
+  "autor": "Jojo Moyes",
+  "categoria": "Romance",
+  "precio": 15.25,
+  "stock": 6,
+  "descripcion": "Louisa acepta un trabajo que cambiará la rutina de Will y la forma en que ambos miran el futuro.",
+  "imagen_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_4NRglSklrrSdbkWaAvFYPmuAj_5GU4HR_bkP8ANbIEj04fB39HsI34M9&s=10\n"
+},
+{
+  "_id": {
+    "$oid": "6acb1f349e27cd2867eab34d"
+  },
+  "titulo": "Eleanor y Park",
+  "autor": "Rainbow Rowell",
+  "categoria": "Romance",
+  "precio": 14.5,
+  "stock": 8,
+  "descripcion": "Dos adolescentes distintos comparten música, conversaciones y un primer amor que transforma sus vidas.",
+  "imagen_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqicHN9FJ-wiZ4zbqr61buJfxeCEKdx_rqI7WincO31A4YvYP-dhoK7Z5n&s=10\n"
+},
+{
+  "_id": {
+    "$oid": "6acb1f349e27cd2867eab34e"
+  },
+  "titulo": "Jane Eyre",
+  "autor": "Charlotte Brontë",
+  "categoria": "Romance",
+  "precio": 13.9,
+  "stock": 5,
+  "descripcion": "Jane busca independencia y afecto mientras trabaja en Thornfield Hall y conoce al señor Rochester.",
+  "imagen_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJWz1YHCxRTnO3Cu3nD1N6AnhzNAYP0wXCnVg9IAllePcnvBwDvxmrabb0&s=10\n"
+},
+{
+  "_id": {
+    "$oid": "6acb1f349e27cd2867eab34f"
+  },
+  "titulo": "Hábitos atómicos",
+  "autor": "James Clear",
+  "categoria": "Autoayuda",
+  "precio": 18.75,
+  "stock": 10,
+  "descripcion": "Estrategias concretas para construir hábitos positivos y mejorar poco a poco las rutinas diarias.",
+  "imagen_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCjjlc9fW_YxdGM5h8cJcJ1fbA_qXRWgD1rR4auBsjOXdnoowXD6DWog0&s=10\n"
+},
+{
+  "_id": {
+    "$oid": "6acb1f349e27cd2867eab350"
+  },
+  "titulo": "Los cuatro acuerdos",
+  "autor": "Don Miguel Ruiz",
+  "categoria": "Autoayuda",
+  "precio": 14.25,
+  "stock": 7,
+  "descripcion": "Una guía breve que propone cuatro principios para relacionarse con uno mismo y con los demás.",
+  "imagen_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHDnpISc1qpD9qZ0rF3Xdtz2FVTXO78aRcQmJ3fbgUJWboYWnYXULFeNo&s=10\n"
+},
+{
+  "_id": {
+    "$oid": "6acb1f349e27cd2867eab351"
+  },
+  "titulo": "El poder del ahora",
+  "autor": "Eckhart Tolle",
+  "categoria": "Autoayuda",
+  "precio": 16,
+  "stock": 6,
+  "descripcion": "Una invitación a prestar atención al presente y observar los pensamientos con mayor claridad.",
+  "imagen_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx_wBinfWZitxDHcpg3RlcGmxNPKG8lKEL92C2_YrGXR0TOd8INr8El8U&s=10\n"
+},
+{
+  "_id": {
+    "$oid": "6acb1f349e27cd2867eab352"
+  },
+  "titulo": "Cómo ganar amigos e influir sobre las personas",
+  "autor": "Dale Carnegie",
+  "categoria": "Autoayuda",
+  "precio": 15.5,
+  "stock": 8,
+  "descripcion": "Consejos clásicos para comunicarse mejor, escuchar con atención y fortalecer relaciones personales.",
+  "imagen_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFrpxjZcQh6w9yJilXzed6pQ8EtLMtkddLYwt3FEkrGKthjDIDsxxdT8k&s=10\n"
+}]

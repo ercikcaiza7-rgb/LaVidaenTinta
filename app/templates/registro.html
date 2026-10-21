@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#11131b">
+  <title>Crear cuenta — La Vida en Tinta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="auth-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="{{ url_for('index') }}" aria-label="La Vida en Tinta, inicio">
+        <span class="brand-mark" aria-hidden="true">L<span>.</span></span>
+        <span class="brand-name"><span>La Vida</span><small>EN TINTA</small></span>
+      </a>
+      <nav class="header-actions" aria-label="Navegación">
+        <a class="button button-quiet button-small" href="{{ url_for('index') }}">Inicio</a>
+        <a class="button button-primary button-small" href="{{ url_for('login') }}">Ingresar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="auth-layout auth-register">
+    <aside class="auth-aside">
+      <div class="auth-aside-inner">
+        <p class="eyebrow">MÁS HISTORIAS · MÁS RAZONES PARA LEER</p>
+        <h1>Tu lugar entre<br><span>lectores empieza aquí.</span></h1>
+        <p>Crea tu cuenta para guardar tu carrito, completar tus compras y volver a consultar tus pedidos.</p>
+        <div class="auth-book-ornament" aria-hidden="true">
+           <div class="auth-book-cover auth-book-cover-one" style="background-image: url('https://www.edicontinente.com.ar/image/titulos/9788419087492.jpg'); background-size: cover; background-position: center;">
+           <span style="display: none;">El principito</span>
+       </div>
+        <div class="auth-book-cover auth-book-cover-two" style="background-image: url('https://images.cdn1.buscalibre.com/fit-in/360x360/1e/99/1e99d0968f1e6236867f2bbfbf1544d0.jpg'); background-size: cover; background-position: center;">
+           <span style="display: none;">Donde viven los monstruos</span>
+        </div>
+    <div class="auth-book-cover auth-book-cover-three" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQy3UNlWgrboHFMxFHEVMA6hWf7UYhUCRGvh6RxtbMBQ&s=10'); background-size: cover; background-position: center;">
+        <span style="display: none;">Matilda</span>
+    </div>
+</div>
+        <span class="auth-quote">Tu próxima historia te espera.</span>
+      </div>
+    </aside>
+
+    <section class="auth-panel">
+      <div class="auth-form-wrap">
+        <p class="eyebrow">EMPIEZA TU PRÓXIMA AVENTURA</p>
+        <h2>Crea tu <span>cuenta.</span></h2>
+        <p class="auth-intro">Completa estos datos para unirte a La Vida en Tinta.</p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <div class="flash-messages" role="status" aria-live="polite">
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        <form action="{{ url_for('registro') }}" method="post" class="auth-form">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" autocomplete="given-name" required placeholder="Tu nombre">
+
+          <label for="apellido">Apellido</label>
+          <input type="text" id="apellido" name="apellido" autocomplete="family-name" required placeholder="Tu apellido">
+
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" autocomplete="email" required placeholder="tu@correo.com">
+
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" name="password" autocomplete="new-password" required placeholder="Crea una contraseña">
+
+          <button type="submit" class="button button-primary button-wide">Crear mi cuenta</button>
+        </form>
+
+        <p class="auth-switch">¿Ya tienes cuenta? <a href="{{ url_for('login') }}">Ingresa aquí</a></p>
+        <p class="auth-disclaimer">La contraseña se guarda cifrada en tu cuenta.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="auth-footer">
+    <span>© 2026 La Vida en Tinta</span>
+    <a href="{{ url_for('index') }}">← Volver al catálogo</a>
+  </footer>
+</body>
+</html>
